@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import PropTypes from "prop-types";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
@@ -12,16 +12,16 @@ import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import AccessTime from "@material-ui/icons/AccessTime";
 import Accessibility from "@material-ui/icons/Accessibility";
 // core components
-import GridItem from "components/Grid/GridItem.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import Danger from "components/Typography/Danger.jsx";
-import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardIcon from "components/Card/CardIcon.jsx";
-import CardBody from "components/Card/CardBody.jsx";
-import CardFooter from "components/Card/CardFooter.jsx";
+import GridItem from "../../components/Grid/GridItem.jsx";
+import GridContainer from "../../components/Grid/GridContainer.jsx";
+import Danger from "../../components/Typography/Danger.jsx";
+import Card from "../../components/Card/Card.jsx";
+import CardHeader from "../../components/Card/CardHeader.jsx";
+import CardIcon from "../../components/Card/CardIcon.jsx";
+import CardBody from "../../components/Card/CardBody.jsx";
+import CardFooter from "../../components/Card/CardFooter.jsx";
 
-import { lineChart } from "variables/charts";
+import { lineChart } from "../../variables/charts";
 
 import {
   getFutureStressData,
@@ -30,9 +30,10 @@ import {
   getSleepData
 } from "../../services/data";
 
-import dashboardStyle from "assets/jss/modules/views/dashboardStyle.jsx";
+import dashboardStyle from "../../assets/jss/modules/views/dashboardStyle.jsx";
 
 class Dashboard extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +41,8 @@ class Dashboard extends React.Component {
       stressData: { labels: [], series: [] },
       moodData: { labels: [], series: [] },
       ruminationData: { labels: [], series: [] },
-      sleepData: { labels: [], series: [] }
+      sleepData: { labels: [], series: [] },
+      // currentTime: new Date() 
     };
 
     getFutureStressData().then(data => {
@@ -58,7 +60,24 @@ class Dashboard extends React.Component {
     getSleepData().then(data => {
       this.setState({ sleepData: data });
     });
-  }
+  };
+
+  // componentDidMount() {
+  //   this.timerID = setInterval(
+  //     () => this.tick(),
+  //     1000
+  //   );
+  // }
+
+  // componentWillUnmount() {
+  //   clearInterval(this.timerID);
+  // }
+
+  // tick() {
+  //   this.setState({
+  //     currentTime: new Date()
+  //   });
+  // }
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -92,7 +111,8 @@ class Dashboard extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { stressData, moodData, ruminationData, sleepData } = this.state;
+    const { stressData, moodData } = this.state;
+    const currentTime = new Date();
     return (
       <div>
         <GridContainer>
@@ -100,22 +120,23 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="warning" stats icon>
                 <CardIcon color="warning">
-                  <Icon>warning</Icon>
+                  <Icon>thermostat</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Future Stress</p>
+                <p className={classes.cardCategory}>Temperature</p>
                 <h3 className={classes.cardTitle}>
-                  {this.getAvg(stressData.series)}/5
+                  {this.getAvg(stressData.series)}°F
                 </h3>
               </CardHeader>
               <CardFooter stats>
+                This is the patient's current temperature in Fahrenheit
                 <div className={classes.stats}>
+                  <AccessTime /> updated {currentTime.toLocaleTimeString()}
+                </div>
+                {/* <div className={classes.stats}>
                   <Danger>
                     <Warning />
                   </Danger>
-                  <a href="#" onClick={e => e.preventDefault()}>
-                    Improve your score
-                  </a>
-                </div>
+                </div> */}
               </CardFooter>
             </Card>
           </GridItem>
@@ -123,56 +144,23 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="success" stats icon>
                 <CardIcon color="success">
-                  <Icon>insert_emoticon</Icon>
+                  <Icon>favorite</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Mood</p>
+                <p className={classes.cardCategory}>Pulse</p>
                 <h3 className={classes.cardTitle}>
-                  {this.getAvg(moodData.series)}/5
+                  70 bpm
+                  {/* {this.getAvg(moodData.series)} */}
                 </h3>
               </CardHeader>
               <CardFooter stats>
+                This is the patient's pulse in beats per minute (bpm)
                 <div className={classes.stats}>
+                  <AccessTime /> updated {currentTime.toLocaleTimeString()}
+                </div>
+                {/* <div className={classes.stats}>
                   <DateRange />
                   Last 5 Months
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <Icon>av_timer</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Rumination</p>
-                <h3 className={classes.cardTitle}>
-                  {this.getAvg(ruminationData.series)}/5
-                </h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <DateRange />
-                  Last 5 Months
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="info" stats icon>
-                <CardIcon color="info">
-                  <Accessibility />
-                </CardIcon>
-                <p className={classes.cardCategory}>Sleep</p>
-                <h3 className={classes.cardTitle}>
-                  {this.getAvg(sleepData.series)}/5
-                </h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <DateRange />
-                  Last 5 Months
-                </div>
+                </div> */}
               </CardFooter>
             </Card>
           </GridItem>
@@ -190,7 +178,7 @@ class Dashboard extends React.Component {
                 />
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Future Stress</h4>
+                <h4 className={classes.cardTitle}>Temperature</h4>
                 <p className={classes.cardCategory}>
                   <span className={classes.successText}>
                     <ArrowUpward className={classes.upArrowCardCategory} />
@@ -201,7 +189,7 @@ class Dashboard extends React.Component {
               </CardBody>
               <CardFooter chart>
                 <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
+                  <AccessTime /> updated at {currentTime.toLocaleTimeString()}
                 </div>
               </CardFooter>
             </Card>
@@ -218,7 +206,7 @@ class Dashboard extends React.Component {
                 />
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Mood</h4>
+                <h4 className={classes.cardTitle}>Pulse</h4>
                 <p className={classes.cardCategory}>
                   <span className={classes.successText}>
                     <ArrowUpward className={classes.upArrowCardCategory} />
@@ -229,63 +217,7 @@ class Dashboard extends React.Component {
               </CardBody>
               <CardFooter chart>
                 <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
-            <Card chart>
-              <CardHeader color="danger">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={ruminationData}
-                  type="Line"
-                  options={lineChart.options}
-                  listener={lineChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Rumination</h4>
-                <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} />
-                    {this.getDiff(moodData.series)}%
-                  </span>{" "}
-                  increase in 5 months.
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
-            <Card chart>
-              <CardHeader color="info">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={sleepData}
-                  type="Line"
-                  options={lineChart.options}
-                  listener={lineChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Sleep</h4>
-                <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} />
-                    {this.getDiff(sleepData.series)}%
-                  </span>{" "}
-                  increase in 5 months.
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
+                  <AccessTime /> updated at {currentTime.toLocaleTimeString()}
                 </div>
               </CardFooter>
             </Card>

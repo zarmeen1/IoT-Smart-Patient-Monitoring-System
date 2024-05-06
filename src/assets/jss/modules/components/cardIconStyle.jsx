@@ -5,7 +5,7 @@ import {
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 const cardIconStyle = {
   cardIcon: {
     "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {

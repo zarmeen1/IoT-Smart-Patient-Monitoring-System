@@ -8,15 +8,15 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-import Header from "components/Header/Header.jsx";
-import Footer from "components/Footer/Footer.jsx";
-import Sidebar from "components/Sidebar/Sidebar.jsx";
+import Header from "../../components/Header/Header.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
+import Sidebar from "../../components/Sidebar/Sidebar.jsx";
 
-import dashboardRoutes from "routes/dashboard.jsx";
+import dashboardRoutes from "../../routes/dashboard.jsx";
 
-import dashboardStyle from "assets/jss/modules/layouts/dashboardStyle.jsx";
+import dashboardStyle from "../../assets/jss/modules/layouts/dashboardStyle.jsx";
 
-import logo from "assets/img/logo.png";
+import logo from "../../assets/img/logo.png";
 
 const switchRoutes = (
   <Switch>
@@ -83,7 +83,6 @@ class App extends React.Component {
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
-          {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
           {this.getRoute() ? (
             <div className={classes.content}>
               <div className={classes.container}>{switchRoutes}</div>

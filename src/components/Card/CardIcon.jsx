@@ -8,7 +8,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 
 // core components
-import cardIconStyle from "assets/jss/modules/components/cardIconStyle.jsx";
+import cardIconStyle from "../../assets/jss/modules/components/cardIconStyle.jsx";
 
 function CardIcon({ ...props }) {
   const { classes, className, children, color, ...rest } = props;

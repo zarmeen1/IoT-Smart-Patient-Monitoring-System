@@ -10,7 +10,7 @@ import Input from "@material-ui/core/Input";
 import Clear from "@material-ui/icons/Clear";
 import Check from "@material-ui/icons/Check";
 // core components
-import customInputStyle from "assets/jss/modules/components/customInputStyle";
+import customInputStyle from "../../assets/jss/modules/components/customInputStyle";
 
 function CustomInput({ ...props }) {
   const {

@@ -5,7 +5,7 @@ import {
   successColor,
   warningColor,
   dangerColor
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 
 const typographyStyle = {
   defaultFontStyle: {

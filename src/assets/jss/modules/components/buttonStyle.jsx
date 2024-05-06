@@ -6,7 +6,7 @@ import {
   warningColor,
   dangerColor,
   roseColor
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 
 const buttonStyle = {
   button: {

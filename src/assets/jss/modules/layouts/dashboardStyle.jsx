@@ -2,7 +2,7 @@ import {
   drawerWidth,
   transition,
   container
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 
 const appStyle = theme => ({
   wrapper: {

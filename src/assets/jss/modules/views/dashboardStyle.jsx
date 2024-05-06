@@ -1,4 +1,4 @@
-import { successColor } from "assets/jss/main.jsx";
+import { successColor } from "../../main.jsx";
 
 const dashboardStyle = {
   successText: {

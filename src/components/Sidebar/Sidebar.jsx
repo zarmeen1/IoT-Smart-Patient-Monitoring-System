@@ -12,7 +12,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
 
-import sidebarStyle from "assets/jss/modules/components/sidebarStyle.jsx";
+import sidebarStyle from "../../assets/jss/modules/components/sidebarStyle.jsx";
 
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)

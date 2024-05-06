@@ -2,7 +2,7 @@ import {
   primaryColor,
   primaryBoxShadow,
   defaultFont
-} from "assets/jss/main.jsx";
+} from "../main.jsx";
 
 const dropdownStyle = theme => ({
   buttonLink: {

@@ -6,7 +6,7 @@ import {
   warningBoxShadow,
   dangerBoxShadow,
   roseBoxShadow
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 
 const snackbarContentStyle = {
   root: {

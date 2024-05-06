@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 // core components
-import tableStyle from "assets/jss/modules/components/tableStyle";
+import tableStyle from "../../assets/jss/modules/components/tableStyle";
 
 function CustomTable({ ...props }) {
   const { classes, tableHead, tableData, tableHeaderColor } = props;

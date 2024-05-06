@@ -1,9 +1,9 @@
 import {
   defaultFont,
   dangerColor
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 
-import dropdownStyle from "assets/jss/modules/dropdownStyle.jsx";
+import dropdownStyle from "../dropdownStyle.jsx";
 
 const headerLinksStyle = theme => ({
   ...dropdownStyle(theme),

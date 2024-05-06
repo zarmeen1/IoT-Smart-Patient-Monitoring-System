@@ -3,7 +3,7 @@ import {
   dangerColor,
   successColor,
   defaultFont
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 
 const customInputStyle = {
   disabled: {

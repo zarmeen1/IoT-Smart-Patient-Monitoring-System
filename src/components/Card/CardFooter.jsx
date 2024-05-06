@@ -8,7 +8,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
 
 // core components
-import cardFooterStyle from "assets/jss/modules/components/cardFooterStyle.jsx";
+import cardFooterStyle from "../../assets/jss/modules/components/cardFooterStyle.jsx";
 
 function CardFooter({ ...props }) {
   const {

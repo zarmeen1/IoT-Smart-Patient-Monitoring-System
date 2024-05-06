@@ -7,7 +7,7 @@ import {
   roseColor,
   grayColor,
   defaultFont
-} from "assets/jss/main.jsx";
+} from "../../main.jsx";
 
 const tableStyle = theme => ({
   warningTableHeader: {
